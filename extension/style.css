@@ -1,0 +1,276 @@
+body {
+    width: 300px;
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    text-align: center;
+}
+
+label[for="topic"] {
+    display: block;
+    text-align: center;
+    margin-bottom: 8px;}
+
+input#topic {
+    display: block;
+    margin: 0 auto 8px auto; /* Center align and add margin at the bottom */
+    text-align: center;
+}
+
+input#topic {
+    text-align: center;
+    display: block;
+    margin-bottom: 8px;
+}
+#topics{
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+}
+
+#topicsList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-height: 125px;  /* Show only ~5 items */
+    overflow-y: auto;   /* Scroll if there are more */
+}
+
+
+
+#SaveTopics {
+    display: block; /* Ensures the button behaves as a block element */
+    margin: 20px auto; /* Centers the button horizontally */
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #28a745; /* Green color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#SaveTopics:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+
+#saveTabs {
+    display: block; /* Ensures it takes up full width and can be centered */
+    margin: 20px auto; /* Centers horizontally */
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#saveTabs:hover {
+    background-color: #0056b3;
+}
+
+
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    cursor: pointer;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+li:hover {
+    background: #f0f0f0;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    color: green;
+}
+
+table {
+    border-collapse: collapse;
+    width: 50%;
+    margin: 20px auto;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* General table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    max-height: 200px; /* Limit the height of the table */
+    overflow-y: auto; /* Enable vertical scrolling */
+    display: block; /* Make the table block-level to enable scrolling */
+}
+
+/* Make sure the table headers stay fixed while scrolling */
+thead {
+    position: sticky;
+    top: 0;
+    background-color: #fff; /* Ensure headers are visible */
+    z-index: 1;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+/* Styling for the topic column */
+td.topic {
+    color: #007bff; /* Blue color for topics */
+    font-weight: bold; /* Make topics stand out */
+    cursor: pointer; /* Show pointer cursor when hovering */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for background and text color */
+}
+
+/* Change background color and text color when hovered */
+td.topic:hover {
+    background-color: #f1f1f1; /* Light grey background when hovered */
+    color: #0056b3; /* Darker blue color when hovered */
+}
+
+/* Optional: Styling for the date column */
+td.date {
+    color: #555; /* Gray color for dates */
+}
+
+/* Button styling */
+#closeTopics {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#closeTopics:hover {
+    background-color: #0056b3;
+}
+
+.clickable {
+    cursor: pointer; /* Change cursor to indicate clickability */
+    transition: background-color 0.3s ease, box-shadow 0.2s ease;
+}
+
+.clickable:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Darken on hover */
+}
+
+.clickable:active {
+    background-color: rgba(0, 0, 0, 0.2); /* Darker shade on click */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3); /* Slight inset shadow for click effect */
+}
+
+
+h1 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+#topicContainer {
+    background: #fff;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #007bff;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+#openAllTabsBtn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: background 0.3s;
+    display: none; /* Hidden by default */
+}
+
+#openAllTabsBtn:hover {
+    background: #0056b3;
+}
+
+#linksList {
+    list-style-type: none;
+    padding: 0;
+    max-height: 250px; /* Limit height to show 6 items */
+    overflow-y: auto;
+}
+
+#linksList li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#linksList li:last-child {
+    border-bottom: none;
+}
+
+#linksList a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+#linksList a:hover {
+    text-decoration: underline;
+}
+
+.date {
+    font-size: 12px;
+    color: gray;
+}

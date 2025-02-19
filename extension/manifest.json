@@ -1,0 +1,15 @@
+{
+  "name": "Save Research Links",
+  "description": "Automatically save open research tabs",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": ["tabs", "storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": ["http://localhost:5000/"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "browser.png"
+  }
+}
