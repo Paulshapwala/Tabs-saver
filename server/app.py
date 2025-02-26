@@ -1,9 +1,17 @@
 import sqlite3
+import os
 from flask import Flask, request, jsonify
 import datetime
 
 app = Flask(__name__)
-DB_FILE = "research_links.db"
+
+# Absolute path to the database file
+DB_FILE = r"C:\Users\shapz\Desktop\database files\tabs-saver-db\research_links.db"
+
+# Ensure that the database directory exists
+DB_DIR = os.path.dirname(DB_FILE)
+os.makedirs(DB_DIR, exist_ok=True)
+
 
 # Initialize database and create table if it doesn't exist
 def init_db():

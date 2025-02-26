@@ -177,13 +177,13 @@ function displayLinks(data) {
     openAllTabsBtn.onclick = () => openAllTabs(links);
 }
 
-
-function openAllTabs(links) {
-    links.forEach(linkObj => {
-        window.open(linkObj.url, "_blank");
+function openAllTabs(linkArray) {
+    const urls = linkArray.map(link => link.url); // Extract URLs from objects
+    
+    chrome.windows.create({ url: urls }, (newWindow) => {
+        console.log("New window created with all tabs:", newWindow);
     });
 }
-
 
 function searchTopics() {
     const topicInput = document.querySelector("input[name='topic']").value.toLowerCase();
@@ -214,8 +214,10 @@ function TopicsEvent(){
 
 
 function HomeEventHandler(){
-    document.getElementById('content'.innerHTML = originalContent);
-    console.log('HomeEventHandler');
+    fetchHtml('popup.html').then(html =>{ document.getElementById('content').innerHTML = html;
+        SaveTabsEvent();
+        SaveTopicsEvent();
+    })
 }
 
 
@@ -233,6 +235,11 @@ function TopicsEventHandler(){
     });
     
 }
+
+function main (){
+    SaveTabsEvent();
+    SaveTopicsEvent();
+
+}
                         
-SaveTabsEvent();
-SaveTopicsEvent();
+main();
