@@ -1,58 +1,69 @@
 # Tabs-Saver
 
-A browser extension that saves all your open tabs in a database.
+A browser extension project for organising browsing links by research topic, built with vanilla JavaScript, a Flask JSON API and SQLite.
 
-## Overview
+## What the project demonstrates
 
-Tabs-Saver is a workflow automation tool designed to help you keep track of your browsing sessions. Instead of losing your tabs history when you close your browser, this extension allows you to save all open tabs with a single click. Whether you're conducting research or working on multiple projects, Tabs-Saver ensures you can always revisit your browsing sessions effortlessly.
+The extension interface loads HTML screen fragments and calls the Flask API to save links, list saved topics and retrieve links for a topic. SQLite stores the topic, date, title and URL. The code also includes browser tab capture (`chrome.tabs.query`) and reopening (`chrome.windows.create`); those browser integrations were **not tested** in the local review.
 
-## Features
+For a Junior Software Developer portfolio, this project demonstrates JavaScript DOM updates, asynchronous API calls, Python request handling and SQL persistence. The frontend is plain HTML/CSS/JavaScript; Flask serves JSON rather than rendering the interface.
 
-- **Save Open Tabs** – Click a button to store all currently open tabs.
-- **Persistent History** – Maintain a record of all browsing sessions.
-- **Easy Retrieval** – Quickly reopen saved tabs for seamless workflow continuation.
+## Local demonstration — synthetic data
 
-## Tech Stack
+Captured on **12 November 2026** for a portfolio review supporting a Saolix Junior Software Developer application. Both screenshots show a **local web preview of the extension interface using synthetic data**, not an installed-extension end-to-end test or a hosted deployment.
 
-### Current Implementation
+The temporary preview used a writable local database path in place of the hard-coded Windows path in `server/app.py`, and served the existing frontend files locally. That adjustment is not included in this documentation change. Sample links point to public project repositories; no real browsing history was used.
 
-- **Frontend:** Pure JavaScript (SPA, no framework)
-- **Backend:** Flask (Server-Side Rendering)
-- **Database:** SQLite (for initial development and testing)
+### Saved topics — local demonstration using synthetic data
 
-### Future Improvements
+The existing interface lists sample topics returned by Flask/SQLite.
 
-- **Database Migration** – Move from SQLite to PostgreSQL for scalability.
-- **Backend Upgrade** – Transition from Flask to FastAPI for better performance and async handling.
-- **AI-Powered Categorization** – Dynamically categorize tabs based on content.
-- **Multi-User Support** – Implement authentication and user-based storage.
-- **Cloud Deployment** – Host backend on PythonAnywhere (initially) and transition to Google Cloud for a full web app.
+![Local demonstration using synthetic data: saved research topics in the Tabs-Saver web preview](docs/screenshots/tabs-saver-saved-topics.png)
 
-## Installation
+### Retrieved links — local demonstration using synthetic data
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/tabs-saver.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd tabs-saver
-   ```
-3. Load the extension into your browser:
-   - Open `chrome://extensions/` (for Chrome-based browsers).
-   - Enable Developer Mode.
-   - Click "Load unpacked" and select the extension folder.
+Selecting a sample topic retrieves its saved GitHub links. The visible “Open All Tabs” button does not establish that reopening worked: **browser tab capture and reopening were not tested**.
 
-## Usage
+![Local demonstration using synthetic data: retrieved sample GitHub links in the Tabs-Saver web preview](docs/screenshots/tabs-saver-retrieved-links.png)
 
-1. Open multiple tabs in your browser.
-2. Click the "Save Tabs" button in the extension.
-3. Access your saved sessions whenever needed.
+See [screenshot context and limitations](docs/screenshots/README.md).
+
+## Implemented behavior and verification limits
+
+- Flask endpoints: `POST /save_links`, `GET /get_topics`, and `GET /get_links/<topic>`.
+- With the temporary database-path adjustment, API checks passed for saving a sample link, listing topics, retrieving the link and rejecting an empty link list.
+- The local browser preview displayed topics and retrieved links. Extension installation, permissions, tab capture and reopening remain unverified.
+- Save handling does not check `response.ok` before reporting success; a JSON error response can appear successful. Robust error handling remains follow-up work.
+
+## Local setup status
+
+```bash
+git clone https://github.com/Paulshapwala/Tabs-saver.git
+cd Tabs-saver
+```
+
+The current checkout is not a portable, ready-to-run demo. Before running it:
+
+1. Create an isolated Python environment and install Flask. A backend dependency manifest is still needed; avoid relying on the committed Windows environment under `server/TABS`.
+2. Configure a writable database path in `server/app.py`. Its current hard-coded Windows path fails on Linux. A portable configuration mechanism is planned.
+3. Start the backend with `python server/app.py`; the frontend expects `http://localhost:5000`.
+4. For extension testing in a Chrome-based browser, open `chrome://extensions/`, enable Developer Mode and use **Load unpacked** to select `extension/`. Validate browser/API integration before relying on save or reopen actions.
+
+The screenshots document a separate temporary preview; these instructions do not claim that a fresh-clone extension workflow has been verified.
+
+## Planned improvements
+
+These are proposals, not current capabilities:
+
+- Portable database configuration, dependency manifest and improved API error handling.
+- End-to-end extension testing of save → list → retrieve → reopen.
+- PostgreSQL migration, a possible FastAPI backend migration, AI-assisted categorisation, authentication and multi-user storage.
+- Future cloud hosting, previously proposed for PythonAnywhere and Google Cloud. No currently live deployment is demonstrated here.
 
 ## License
 
-This project is licensed under the Apache License 2.0.
+This project is licensed under the Apache License 2.0. See [LICENSE](LICENSE).
 
 ## Contribution
 
-Contributions are welcome! Feel free to open issues or submit pull requests.
+Contributions are welcome through issues and pull requests.
